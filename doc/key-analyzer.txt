@@ -1,0 +1,47 @@
+==============================================================================
+------------------------------------------------------------------------------
+                                                            *KeyAnalyzer.show()*
+                      `KeyAnalyzer.show`({mode}, {prefix})
+Toggle the plugin by calling the `enable`/`disable` methods respectively.
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                           *KeyAnalyzer.options*
+                             `KeyAnalyzer.options`
+KeyAnalyzer configuration with its default values.
+
+Type ~
+`(table)`
+Default values:
+>lua
+  KeyAnalyzer.options = {
+      -- Prints useful logs about what event are triggered, and reasons actions are executed.
+      debug = false,
+      -- Name of the command to use for the plugin, leave empty or false to disable the command.
+      command_name = "KeyAnalyzer",
+      highlights = {
+          bracket_used = "KeyAnalyzerBracketUsed",
+          letter_used = "KeyAnalyzerLetterUsed",
+          bracket_unused = "KeyAnalyzerBracketUnused",
+          letter_unused = "KeyAnalyzerLetterUnused",
+          promo_highlight = "KeyAnalyzerPromo",
+          -- If you are using any of the built-in highlight groups you should leave this enabled
+          define_default_highlights = true,
+      },
+  }
+
+<
+------------------------------------------------------------------------------
+                                                           *KeyAnalyzer.setup()*
+                         `KeyAnalyzer.setup`({options})
+Define your key-analyzer setup.
+
+Parameters ~
+{options} `(table)` Module config table. See |KeyAnalyzer.options|.
+
+Usage ~
+`require("key-analyzer").setup()` (add `{}` with your |KeyAnalyzer.options| table)
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

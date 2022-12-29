@@ -1,0 +1,3 @@
+KeyAnalyzer.options	key-analyzer.txt	/*KeyAnalyzer.options*
+KeyAnalyzer.setup()	key-analyzer.txt	/*KeyAnalyzer.setup()*
+KeyAnalyzer.show()	key-analyzer.txt	/*KeyAnalyzer.show()*
