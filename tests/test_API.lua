@@ -26,9 +26,7 @@ T["setup()"]["sets exposed methods and default options value"] = function()
     Helpers.expect.global_type(child, "_G.KeyAnalyzer", "table")
 
     -- public methods
-    Helpers.expect.global_type(child, "_G.KeyAnalyzer.toggle", "function")
-    Helpers.expect.global_type(child, "_G.KeyAnalyzer.disable", "function")
-    Helpers.expect.global_type(child, "_G.KeyAnalyzer.enable", "function")
+    Helpers.expect.global_type(child, "_G.KeyAnalyzer.show", "function")
 
     -- config
     Helpers.expect.global_type(child, "_G.KeyAnalyzer.config", "table")
