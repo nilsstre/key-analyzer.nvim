@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-        Ever wondered which mappings are free to be mapped? Now it's a easier.
+        Ever wondered which mappings are free to be mapped? Now it's a easier to figure it out.
 </p>
 
 <p align="center">
@@ -94,7 +94,7 @@ require("key-analyzer").setup({
 
 ## Limitations
 
- - Not all maps may be shown. For example `<C-W>*`, because these built in window maps are not returned by `vim.api.nvim_get_keymap(mode)`. Another example that will not show up are also fold maps (`z`).
+ - Not all maps will be shown. For example `<C-W>`, because these built in window maps are not returned by `vim.api.nvim_get_keymap(mode)`. Another example that will not show up are also fold maps (`z`).
  - Currently only US-ANSII layout is supported, but feel free to open a pull request
  - There is no differentiation between upper case and lower case letters, both will show on the visualisation
  - Remember: Some keys may not actually be bindable, for example <C-[>
@@ -110,3 +110,6 @@ Few ideas:
  - Bring in [presets from which-key.nvim](https://github.com/folke/which-key.nvim/blob/main/lua/which-key/plugins/presets.lua) so that built-in mappings work, eg. `<C-W>`, `z`, ...
 
  Find it interesting? [![X Follow](https://img.shields.io/twitter/follow/OtivDev)](https://x.com/OtivDev)
+
+Thanks to [shortcuts](https://github.com/shortcuts) for the plugin boilerplate <3
+
