@@ -1,5 +1,5 @@
 local log = require("key-analyzer.util.log")
-local keyboards = require("lua.key-analyzer.keyboard")
+local keyboards = require("key-analyzer.keyboard")
 
 local KeyAnalyzer = {}
 
