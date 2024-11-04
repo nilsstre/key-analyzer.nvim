@@ -1,4 +1,4 @@
-local keyboard = require("key-analyzer.keyboard")
+local keyboards = require("lua.key-analyzer.keyboards")
 
 -- internal methods
 local main = {}
@@ -80,7 +80,12 @@ local function create_keyboard_visual(maps, mode, modifier)
         c = "Command",
     }
 
-    for row_idx, row in ipairs(_G.KeyAnalyzer.keyboard) do
+    local keyboard = keyboards.get_keyboard(
+        _G.KeyAnalyzer.config.keyboard.language,
+        _G.KeyAnalyzer.config.keyboard.layout
+    )
+
+    for row_idx, row in ipairs(keyboard) do
         local line = string.rep(" ", math.floor(ROW_OFFSETS[row_idx])) -- Apply offset
         local line_start = #lines + 1
 
@@ -157,9 +162,14 @@ local function get_key_at_cursor()
     -- Each key takes 3 positions [k]
     local key_idx = math.floor((col - 1) / 3)
 
+    local keyboard = keyboards.get_keyboard(
+        _G.KeyAnalyzer.config.keyboard.language,
+        _G.KeyAnalyzer.config.keyboard.layout
+    )
+
     -- Check if we're within a key bracket
-    if key_idx >= 0 and key_idx < #_G.KeyAnalyzer.keyboard[line] then
-        return _G.KeyAnalyzer.keyboard[line][key_idx + 1]
+    if key_idx >= 0 and key_idx < #keyboard[line] then
+        return keyboard[line][key_idx + 1]
     end
 
     return nil

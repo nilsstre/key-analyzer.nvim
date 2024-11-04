@@ -1,5 +1,4 @@
 local log = require("key-analyzer.util.log")
-local keyboards = require("key-analyzer.keyboard")
 
 local KeyAnalyzer = {}
 
@@ -55,11 +54,6 @@ end
 ---@usage `require("key-analyzer").setup()` (add `{}` with your |KeyAnalyzer.options| table)
 function KeyAnalyzer.setup(options)
     KeyAnalyzer.options = KeyAnalyzer.defaults(options or {})
-
-    KeyAnalyzer.keyboard = keyboards.get_keyboard(
-        KeyAnalyzer.options.keyboard.language,
-        KeyAnalyzer.options.keyboard.layout
-    )
 
     log.warn_deprecation(KeyAnalyzer.options)
 

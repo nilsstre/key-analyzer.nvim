@@ -1,4 +1,4 @@
-local keyboard = {}
+local keyboards = {}
 
 local KEYBOARD_LAYOUTS = {
     english = {
@@ -30,7 +30,7 @@ local KEYBOARD_LAYOUTS = {
 ---@param language string keyboard language
 ---@param layout string keyboard layout
 ---@return table
-function keyboard.get_keyboard(language, layout)
+function keyboards.get_keyboard(language, layout)
     local keyboard_layouts = KEYBOARD_LAYOUTS[language]
 
     assert(keyboard_layouts ~= nil, string.format("%s is not a reconized language", language))
@@ -45,4 +45,4 @@ function keyboard.get_keyboard(language, layout)
     return keyboard_layout
 end
 
-return keyboard
+return keyboards
