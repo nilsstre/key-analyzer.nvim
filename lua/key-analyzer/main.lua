@@ -1,4 +1,4 @@
-local keyboards = require("lua.key-analyzer.keyboards")
+local keyboards = require("key-analyzer.keyboards")
 
 -- internal methods
 local main = {}
