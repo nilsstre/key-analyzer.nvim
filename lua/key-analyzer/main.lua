@@ -85,11 +85,17 @@ local function create_keyboard_visual(maps, mode, modifier)
         _G.KeyAnalyzer.config.keyboard.layout
     )
 
+    local width = 0
+
     for row_idx, row in ipairs(keyboard) do
         local line = string.rep(" ", math.floor(ROW_OFFSETS[row_idx])) -- Apply offset
         local line_start = #lines + 1
 
-        for col_idx, key in ipairs(row) do
+        local new_width = (#row * 3) + 1
+
+        width = math.max(width, new_width)
+
+        for _, key in ipairs(row) do
             local mapping = maps[key]
             local pos = #line + 1
             if mapping then
@@ -139,7 +145,7 @@ local function create_keyboard_visual(maps, mode, modifier)
 
     table.insert(lines, "") -- Empty line
 
-    return lines, highlights
+    return lines, highlights, width
 end
 
 -- Get key at cursor position
@@ -176,9 +182,8 @@ local function get_key_at_cursor()
 end
 
 -- Display the keyboard map in a floating window
-local function show_in_float(lines, highlights, maps)
+local function show_in_float(lines, highlights, maps, width)
     local buf = vim.api.nvim_create_buf(false, true)
-    local width = 37 -- Increased to accommodate brackets and extra keys
     local height = #lines + 2
 
     -- Configure buffer
@@ -249,8 +254,8 @@ end
 ---@private
 function main.show_keyboard_map(mode, prefix)
     current_maps = get_modified_maps(mode, prefix)
-    local visual, highlights = create_keyboard_visual(current_maps, mode, prefix)
-    show_in_float(visual, highlights, current_maps)
+    local visual, highlights, width = create_keyboard_visual(current_maps, mode, prefix)
+    show_in_float(visual, highlights, current_maps, width)
 end
 
 return main
