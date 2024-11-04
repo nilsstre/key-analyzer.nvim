@@ -1,17 +1,9 @@
-local log = require("key-analyzer.util.log")
+local keyboard = require("key-analyzer.keyboard")
 
 -- internal methods
 local main = {}
 
 local current_maps = {}
-
--- QWERTY keyboard layout representation
-local KEYBOARD_LAYOUT = {
-    { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
-    { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]" },
-    { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'" },
-    { "z", "x", "c", "v", "b", "n", "m", ",", ".", "/" },
-}
 
 -- Row offsets for realistic keyboard layout
 local ROW_OFFSETS = {
@@ -88,7 +80,7 @@ local function create_keyboard_visual(maps, mode, modifier)
         c = "Command",
     }
 
-    for row_idx, row in ipairs(KEYBOARD_LAYOUT) do
+    for row_idx, row in ipairs(_G.KeyAnalyzer.keyboard) do
         local line = string.rep(" ", math.floor(ROW_OFFSETS[row_idx])) -- Apply offset
         local line_start = #lines + 1
 
@@ -166,8 +158,8 @@ local function get_key_at_cursor()
     local key_idx = math.floor((col - 1) / 3)
 
     -- Check if we're within a key bracket
-    if key_idx >= 0 and key_idx < #KEYBOARD_LAYOUT[line] then
-        return KEYBOARD_LAYOUT[line][key_idx + 1]
+    if key_idx >= 0 and key_idx < #_G.KeyAnalyzer.keyboard[line] then
+        return _G.KeyAnalyzer.keyboard[line][key_idx + 1]
     end
 
     return nil

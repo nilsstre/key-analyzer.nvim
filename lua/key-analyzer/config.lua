@@ -1,4 +1,5 @@
 local log = require("key-analyzer.util.log")
+local keyboards = require("lua.key-analyzer.keyboard")
 
 local KeyAnalyzer = {}
 
@@ -20,6 +21,10 @@ KeyAnalyzer.options = {
         promo_highlight = "KeyAnalyzerPromo",
         -- If you are using any of the built-in highlight groups you should leave this enabled
         define_default_highlights = true,
+    },
+    keyboard = {
+        language = "english",
+        layout = "us_qwerty",
     },
 }
 
@@ -50,6 +55,11 @@ end
 ---@usage `require("key-analyzer").setup()` (add `{}` with your |KeyAnalyzer.options| table)
 function KeyAnalyzer.setup(options)
     KeyAnalyzer.options = KeyAnalyzer.defaults(options or {})
+
+    KeyAnalyzer.keyboard = keyboards.get_keyboard(
+        KeyAnalyzer.options.keyboard.language,
+        KeyAnalyzer.options.keyboard.layout
+    )
 
     log.warn_deprecation(KeyAnalyzer.options)
 
